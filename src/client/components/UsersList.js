@@ -17,6 +17,7 @@ class UserList extends Component {
     return (
       <div>
         <h1>Heres a big list of users: </h1>
+        {this.renderUsers()}
       </div>
     );
   }
@@ -26,4 +27,9 @@ function mapStateToProps(state) {
   return { users: state.users };
 }
 
+function loadData(store) {
+  return store.dispatch(fetchUsers());
+}
+
+export { loadData };
 export default connect(mapStateToProps, { fetchUsers })(UserList);
